@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UDAI - Frontend Developer Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Custom styles not easily done with Tailwind */
+        :root {
+            --primary: #4f46e5; /* Indigo-600 */
+            --primary-light: #6366f1; /* Indigo-500 */
+            --bg-dark: #111827; /* Gray-900 */
+            --text-light: #f9fafb; /* Gray-50 */
+            --muted-text: #9ca3af; /* Gray-400 */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            scroll-behavior: smooth;
+        }
+
+        /* Utility classes from the user's original HTML */
+        .muted {
+            color: var(--muted-text);
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            border-radius: 0.5rem;
+            background-color: var(--primary);
+            color: var(--text-light);
+            margin-right: 8px;
+        }
+
+        .primary {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .ghost {
+            background-color: transparent;
+            color: var(--primary-light);
+            border: 2px solid var(--primary-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .ghost:hover {
+            background-color: rgba(79, 70, 229, 0.1); /* primary color with opacity */
+            transform: translateY(-2px);
+        }
+
+        /* General element styling */
+        a {
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        section {
+            padding-top: 4rem; /* Tailwind py-16 */
+            padding-bottom: 4rem;
+        }
+
+        /* Contact Form Styling */
+        #contactform input, #contactform textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border-radius: 0.5rem;
+            background-color: #1f2937; /* Gray-800 */
+            border: 1px solid #4b5563; /* Gray-600 */
+            color: var(--text-light);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        #contactform input:focus, #contactform textarea:focus {
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <header class="sticky top-0 z-50 flex justify-between items-center py-6 border-b border-gray-800 bg-gray-900 bg-opacity-95 backdrop-blur-sm">
+            <div class="brand flex items-center">
+                <div class="logo">U</div>
+                <div class="flex flex-col">
+                    <div class="text-xl font-bold tracking-wider">Udai</div>
+                    <div class="muted" style="font-size:12px">Frontend Developer</div>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav id="desktop-nav" class="hidden md:flex space-x-6 font-medium">
+                <a href="#about" class="text-gray-300 hover:text-white transition duration-200">About</a>
+                <a href="#projects" class="text-gray-300 hover:text-white transition duration-200">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition duration-200">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-gray-300 hover:bg-gray-800 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </header>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 p-4 rounded-lg shadow-xl mb-4">
+            <nav class="flex flex-col space-y-3 font-medium">
+                <a href="#about" class="block py-2 px-3 rounded-md hover:bg-gray-700 transition duration-200">About</a>
+                <a href="#projects" class="block py-2 px-3 rounded-md hover:bg-gray-700 transition duration-200">Projects</a>
+                <a href="#contact" class="block py-2 px-3 rounded-md hover:bg-gray-700 transition duration-200">Contact</a>
+            </nav>
+        </div>
+
+        <main>
+            <!-- Hero Section -->
+            <section class="hero pt-16 pb-20 md:grid md:grid-cols-3 md:gap-12 items-center">
+                <!-- Intro Content -->
+                <div class="intro md:col-span-2 order-2 md:order-1 mt-10 md:mt-0">
+                    <h1 class="text-5xl sm:text-6xl font-extrabold leading-tight">Hi—I'm Udai.</h1>
+                    <p class="muted text-xl mt-4 max-w-lg">I build web apps and clean UI. I specialize in HTML, CSS, JavaScript and React.</p>
+                    <div class="flex flex-wrap gap-3 mt-8">
+                        <a class="ghost inline-block" href="#projects">See my work</a>
+                        <a class="primary inline-block" href="#contact">Hire me</a>
+                    </div>
+                </div>
+                <!-- Profile Card -->
+                <aside class="card md:col-span-1 order-1 md:order-2 bg-gray-800 p-6 rounded-xl shadow-2xl max-w-xs mx-auto md:max-w-none">
+                    <!-- 
+                        ACTION REQUIRED:
+                        Replace the src value below with your image path.
+                        Example 1 (Local File): src="./udai-profile.jpg" 
+                        Example 2 (Online URL): src="https://yourdomain.com/path/to/image.png" 
+                    -->
+                    <img src="./udai-profile.jpg" 
+                         alt="Udai Singh Gurjar Professional Photo" 
+                         class="w-full h-auto rounded-xl object-cover shadow-lg border-4 border-indigo-600">
+                    <p class="muted mt-4 text-sm">Location: Jaipur, India</p>
+                    <p class="muted text-sm">Email: udaisinghgurjar16@gmail.com</p>
+                </aside>
+            </section>
+            
+            <!-- About Section -->
+            <section id="about" class="border-t border-gray-800">
+                <h2 class="section-title text-3xl font-bold mb-4">About</h2>
+                <div class="max-w-4xl text-lg space-y-4">
+                    <p class="text-gray-300">
+                        I'm a 5th semester B.TECH student with a strong passion for frontend development. My journey is focused on creating responsive, accessible, and high-performance web experiences.
+                    </p>
+                    <p class="muted">
+                        I believe in continuous learning and enjoy tackling new challenges. Whether it's mastering the latest React hooks or optimizing CSS performance, I strive to write code that is clean, maintainable, and scalable.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Projects Section -->
+            <section id="projects" class="border-t border-gray-800">
+                <h2 class="section-title text-3xl font-bold mb-8">Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Project 1 -->
+                    <article class="project bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 transition duration-300">
+                        <h3 class="text-xl font-semibold mb-2">Calculator App</h3>
+                        <p class="muted mb-4">A lightweight JS calculator with keyboard support, demonstrating fundamental DOM manipulation and event handling.</p>
+                        <div class="flex gap-4">
+                            <!-- Placeholder links -->
+                            <a href="https://example.com/live-calculator" target="_blank" class="ghost text-sm py-2 px-4 border-2">Live Demo</a> 
+                            <a href="https://github.com/udaisingh2004/calculator" target="_blank" class="ghost text-sm py-2 px-4 border-2">GitHub Repo</a>
+                        </div>
+                    </article>
+
+                    <!-- Placeholder Project 2 -->
+                    <article class="project bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-indigo-500 transition duration-300">
+                        <h3 class="text-xl font-semibold mb-2">To-Do List Manager</h3>
+                        <p class="muted mb-4">A React-based application using state management to track and organize daily tasks with persistence (simulated).</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="ghost text-sm py-2 px-4 border-2">Live Demo</a>
+                            <a href="#" class="ghost text-sm py-2 px-4 border-2">GitHub Repo</a>
+                        </div>
+                    </article>
+                    <!-- Add more projects here... -->
+                </div>
+            </section>
+            
+            <!-- Contact Section -->
+            <section id="contact" class="border-t border-gray-800">
+                <h2 class="section-title text-3xl font-bold mb-6">Contact</h2>
+                <form id="contactform" class="max-w-lg mx-auto p-6 bg-gray-800 rounded-xl shadow-2xl">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                    <textarea id="message" rows="4" placeholder="How can I help?" required></textarea>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                        <button type="submit" class="primary w-full sm:w-auto">Send Message</button>
+                        <button type="button" class="ghost w-full sm:w-auto" id="downloadBtn">Download CV</button>
+                    </div>
+
+                    <div id="status" class="muted text-center mt-6 p-3 rounded-lg hidden" style="font-size: 13px; background-color: rgba(79, 70, 229, 0.2);"></div>
+                </form>
+            </section>
+        </main> 
+        
+        <!-- Footer -->
+        <footer class="text-center py-6 mt-12 border-t border-gray-800 text-sm muted">
+            &copy; <span id="currentYear"></span> Udai - Built with ❤️
+        </footer>
+    </div>
+
+    <script>
+        // Set the current year in the footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // 1. Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Change icon to 'X' when open, and back to 'Hamburger' when closed (optional, not implemented for simplicity)
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Use scrollIntoView with smooth behavior
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 3. Contact Form Submission Handler
+        const contactForm = document.getElementById('contactform');
+        const statusDiv = document.getElementById('status');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            statusDiv.classList.remove('hidden');
+            statusDiv.classList.remove('text-red-400', 'text-green-400'); 
+            statusDiv.textContent = 'Sending your message...';
+            statusDiv.style.backgroundColor = 'rgba(79, 70, 229, 0.2)'; 
+
+            
+            setTimeout(() => {
+                
+                const name = document.getElementById('name').value;
+
+                
+                statusDiv.textContent = `Thank you, ${name}! Your message has been received. I'll be in touch soon.`;
+                statusDiv.classList.add('text-green-400');
+                statusDiv.style.backgroundColor = 'rgba(16, 185, 129, 0.2)'; // Green background
+
+                contactForm.reset(); 
+            }, 2000); // 2 second delay
+        });
+
+        // 4. Download CV Button Handler
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        downloadBtn.addEventListener('click', () => {
+            // In a real application, you would link to a file, but here we simulate the action.
+            const cvUrl = 'https://example.com/udai_singh_gurjar_cv.pdf'; 
+            
+            // Create a temporary link element
+            const a = document.createElement('a');
+            a.href = cvUrl;
+            a.download = 'Udai_Singh_Gurjar_CV.pdf'; // Suggested filename for the downloaded file
+            document.body.appendChild(a);
+            
+            // Simulate a click on the link to trigger the download
+            a.click();
+            
+            // Clean up the temporary link element
+            document.body.removeChild(a);
+
+            // Give user feedback
+            statusDiv.classList.remove('hidden');
+            statusDiv.textContent = 'CV download initiated!';
+            statusDiv.classList.add('text-green-400');
+            statusDiv.style.backgroundColor = 'rgba(16, 185, 129, 0.2)';
+            
+            // Hide the status message after a few seconds
+            setTimeout(() => {
+                statusDiv.classList.add('hidden');
+            }, 3000);
+        });
+
+    </script>
+</body>
+</html
